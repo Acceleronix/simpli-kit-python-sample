@@ -1,5 +1,6 @@
 {
     "QTH_PRODUCT_KEY": "your_product_key",
     "QTH_PRODUCT_SECRET": "your_product_secret",
-    "QTH_SERVER": "mqtt://iot-south.acceleronix.io:1883"
+    "QTH_SERVER": "mqtt://iot-south.acceleronix.io:1883",
+    "APP_version": "V1.0.0"
 }

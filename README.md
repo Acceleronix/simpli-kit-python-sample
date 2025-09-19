@@ -233,6 +233,45 @@ Please visit <https://core.acceleronix.io> to register an account and login to e
 
 You can follow this [tutorial](https://iot-docs.acceleronix.io/quickStart/register.html) to get started.
 
+### 6. OTA Update Steps
+
+#### 6.1 Update Version Configuration
+
+Edit `code/config.json` and set `APP_version` to the new version:
+
+```json
+{
+    "APP_version": "V1.0.1"
+}
+```
+
+#### 6.2 Package Upgrade Files
+
+From the `code/` directory, execute the **tar** command to package the script file and generate the upgrade package `ota.tar.gz.`. Here is the example:
+
+```bash
+tar -zcvf ota.tar.gz ./extensions/sensor_service.py config.json
+```
+
+**Requirements:**
+
+- Include `config.json` with updated `APP_version`
+- Preserve directory structure (run from `code/` directory)
+- Maintain relative file paths
+
+#### 6.3 Create OTA Task
+
+Create a new OTA task in the [Acceleronix Developer Platform](https://core.acceleronix.io/).
+
+**Reference:** [QuecPython Script Upgrade](https://iot-docs.acceleronix.io/deviceDevelop/DeviceAccessPlan/cellular/QuecPython/example/ota/quecpython-example-02.html)
+
+#### 6.4 Component Configuration
+
+Set **Component Identifier** to `appota` in both:
+
+- Version Package Management → "Verify Firmware"
+- Upgrade Plan → "Add a Component"
+
 ## Developer Resources
 
 For additional technical details, documentation, and advanced usage examples, visit the [Acceleronix Developer Portal](https://core.acceleronix.io/).

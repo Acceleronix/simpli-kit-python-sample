@@ -38,6 +38,8 @@ class QthClient(object):
                 }
             }
         )
+        logger.info(app.config["APP_version"])
+        Qth.setAppVer(app.config["APP_version"], self.App_appResultCb)
     
     def load(self):
         self.start()
@@ -205,5 +207,9 @@ class QthClient(object):
         # 当使用url下载固件完成，且MCU更新完毕后，需要获取MCU最新的版本信息，并通过setMcuVer进行更新
         Qth.setMcuVer("MCU1", "V1.0.0", self.sotaInfoCallback, self.sotaResultCallback)
 
-    def sotaResultCallback(comp_no, result):
+    def sotaResultCallback(self, comp_no, result):
         logger.info("sotaResult comp_no:{} result:{}".format(comp_no, result))
+
+    def App_appResultCb(self, comp_no, result):
+        global Appcode_version
+        logger.debug('appResult:',comp_no, result)
